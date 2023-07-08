@@ -12,7 +12,11 @@ pipeline {
         }
         stage('Docker build image') {
             steps{
-                sh 'docker build -t nginx-web:latest .'
+                sh '''
+                docker build -t nginx-web:latest .
+                docker images
+                docker ps -a
+                '''
             }
         }
         stage('Build') {
